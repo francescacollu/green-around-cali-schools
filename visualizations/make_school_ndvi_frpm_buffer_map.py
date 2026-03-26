@@ -244,7 +244,10 @@ def main() -> None:
           div.style.fontFamily = '__FONT__';
           div.style.fontSize = '13px';
           div.innerHTML = `
-            <div style="font-weight:bold; margin-bottom:6px;">FRPM filter</div>
+            <div style="font-weight:bold; margin-bottom:6px;">FRPM Filter</div>
+            <div style="margin-bottom:8px; opacity:0.9; max-width:240px; line-height:1.2;">
+              Shows only schools whose FRPM-eligible share falls within the selected range.
+            </div>
             <div style="margin-bottom:6px;">
               Min: <span id="frpmMinVal">0%</span>
               <span style="opacity:0.8;">&nbsp; | &nbsp;</span>
@@ -258,9 +261,9 @@ def main() -> None:
             </div>
 
             <div style="display:flex; gap:6px; margin-top:2px; flex-wrap:wrap;">
-              <button type="button" onclick="window.setFrpmPreset('all')" style="cursor:pointer;">All</button>
-              <button type="button" onclick="window.setFrpmPreset('q1')" style="cursor:pointer;">First quartile (0\u201325%)</button>
-              <button type="button" onclick="window.setFrpmPreset('q3')" style="cursor:pointer;">Third quartile (50\u201375%)</button>
+              <button type="button" onclick="window.setFrpmPreset('all')" style="cursor:pointer;">All schools</button>
+              <button type="button" onclick="window.setFrpmPreset('low_frpm')" style="cursor:pointer;">Low % of FRPM eligible students</button>
+              <button type="button" onclick="window.setFrpmPreset('high_frpm')" style="cursor:pointer;">High % of FRPM eligible students</button>
             </div>
           `;
 
@@ -320,11 +323,21 @@ def main() -> None:
                 width:100%;
                 margin:0;
                 background: transparent;
+                -webkit-appearance: none;
+                appearance: none;
+                /* Prevent Chromium's native blue track/progress fill. */
+                accent-color: rgba(255,255,255,0);
                 /* Two range inputs overlap; let only thumbs receive pointer events. */
                 pointer-events: none;
               }
-              .frpm-range::-webkit-slider-runnable-track { background: transparent; }
-              .frpm-range::-moz-range-track { background: transparent; }
+              .frpm-range::-webkit-slider-runnable-track {
+                background: transparent;
+                border: 0;
+              }
+              .frpm-range::-moz-range-track {
+                background: transparent;
+                border: 0;
+              }
 
               .frpm-range::-webkit-slider-thumb {
                 -webkit-appearance: none;
@@ -363,7 +376,7 @@ def main() -> None:
         function updateTrack(minPct, maxPct) {
           var bar = document.getElementById('frpmTrackBar');
           if (!bar) { return; }
-          // Highlight selection range; keep the rest muted.
+          // Only highlight the selected range between minPct and maxPct.
           bar.style.background = 'linear-gradient(to right,' +
             'rgba(255,255,255,0.25) 0%,' +
             'rgba(255,255,255,0.25) ' + minPct + '%,' +
@@ -418,9 +431,9 @@ def main() -> None:
         function setPreset(preset) {
           if (preset === 'all') {
             setSliderValues(0, 100);
-          } else if (preset === 'q1') {
+          } else if (preset === 'low_frpm') {
             setSliderValues(0, 25);
-          } else if (preset === 'q3') {
+          } else if (preset === 'high_frpm') {
             setSliderValues(50, 75);
           }
           updateFilter();
@@ -447,7 +460,7 @@ def main() -> None:
     js = js.replace("__STROKE_OPACITY__", str(VIS.ndvi_map_stroke_opacity))
     js = js.replace("__FILL_OPACITY__", str(VIS.ndvi_map_fill_opacity))
     js = js.replace("__FONT__", VIS.font_family)
-    js = js.replace("__ACTIVE__", "rgba(46,204,113,0.95)")
+    js = js.replace("__ACTIVE__", "rgba(255,255,255,0.9)")
     m.get_root().html.add_child(Element(js))
 
     LinearColormap(
@@ -456,6 +469,50 @@ def main() -> None:
         vmax=vmax,
         caption="NDVI mean (within buffer)",
     ).add_to(m)
+
+    # Make the NDVI legend readable on dark basemap and add low/high labels.
+    legend_js = r"""
+    <style>
+      /* Branca colormap legend container */
+      .legend {
+        color: rgba(255,255,255,0.9) !important;
+      }
+      .legend .caption {
+        color: rgba(255,255,255,0.9) !important;
+      }
+      .ndvi-end-labels {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 4px;
+        font-size: 11px;
+        color: rgba(255,255,255,0.85);
+        font-family: __FONT__;
+        line-height: 1.2;
+      }
+    </style>
+    <script>
+      (function() {
+        function addEndLabels() {
+          var legends = document.getElementsByClassName('legend');
+          if (!legends || legends.length === 0) {
+            setTimeout(addEndLabels, 100);
+            return;
+          }
+          for (var i = 0; i < legends.length; i++) {
+            var el = legends[i];
+            if (el.querySelector('.ndvi-end-labels')) { continue; }
+            var labels = document.createElement('div');
+            labels.className = 'ndvi-end-labels';
+            labels.innerHTML = '<div>Low NDVI (less green)</div><div>High NDVI (more green)</div>';
+            el.appendChild(labels);
+          }
+        }
+        addEndLabels();
+      })();
+    </script>
+    """.replace("__FONT__", VIS.font_family)
+    m.get_root().html.add_child(Element(legend_js))
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     m.save(str(args.out))
