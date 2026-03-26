@@ -1,0 +1,38 @@
+FRPM duplicate school_code rows before dedup: 30 (29 extra rows dropped)
+Rows: 298
+Duplicate school_code rows: 0
+Missing/empty school_code: 0
+Missing/No Data school_name: 0
+Missing/No Data city: 0
+Missing/No Data latitude: 0
+Non-numeric latitude (excluding No Data): 0
+Outside rough CA bbox latitude: 0
+Missing/No Data longitude: 0
+Non-numeric longitude (excluding No Data): 0
+Outside rough CA bbox longitude: 0
+Ambiguous charter_raw (not Y/N): 0
+Ambiguous charter_school_yn (not Yes/No): 0
+Charter flag disagree (public vs FRPM): 0
+School name mismatch (public vs FRPM): 2
+school_code                  school_name                            school_name_frpm
+    6047237     G. W. Hellyer Elementary Los Arboles Literacy and Technology Academy
+    6047245 Jeanne R. Meadows Elementary                         McKinley Elementary
+Public rows with no FRPM match (null enrollment_k12): 0
+Missing/empty/No Data enrollment_k12: 0
+Non-numeric enrollment_k12: 0
+Negative enrollment_k12: 0
+Non-integer enrollment_k12 (when numeric expected): 0
+Missing/empty/No Data free_meal_count_k12: 0
+Non-numeric free_meal_count_k12: 0
+Negative free_meal_count_k12: 0
+Non-integer free_meal_count_k12 (when numeric expected): 0
+Missing/empty/No Data percent_eligible_free_k12: 0
+Non-numeric percent_eligible_free_k12: 0
+Negative percent_eligible_free_k12: 0
+Missing/empty/No Data frpm_count_k12: 0
+Non-numeric frpm_count_k12: 0
+Negative frpm_count_k12: 0
+Non-integer frpm_count_k12 (when numeric expected): 0
+Missing/empty/No Data percent_eligible_frpm_k12: 0
+Non-numeric percent_eligible_frpm_k12: 0
+Negative percent_eligible_frpm_k12: 0

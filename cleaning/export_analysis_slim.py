@@ -1,8 +1,8 @@
 """
 Export analysis-ready slim CSV: ID from cds_code, core location fields, one FRPM column.
 
-Reads:  data/cleaned/public_schools_frpm_santaclara_merged.csv (default)
-Writes: data/cleaned/public_schools_frpm_santaclara_analysis.csv (default)
+Reads:  data/cleaned/public_schools_frpm_sv_merged.csv (default)
+Writes: data/cleaned/public_schools_frpm_sv_analysis.csv (default)
 """
 
 from __future__ import annotations
@@ -15,8 +15,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 
-DEFAULT_INPUT = ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_merged.csv"
-DEFAULT_OUTPUT = ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_analysis.csv"
+DEFAULT_INPUT = ROOT / "data" / "cleaned" / "public_schools_frpm_sv_merged.csv"
+DEFAULT_OUTPUT = ROOT / "data" / "cleaned" / "public_schools_frpm_sv_analysis.csv"
 
 NO_DATA = "No Data"
 

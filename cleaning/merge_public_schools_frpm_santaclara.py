@@ -1,9 +1,9 @@
 """
 Merge filtered public schools CSV with Santa Clara FRPM on normalized school_code.
 
-Reads:  data/raw/public_schools_filtered.csv, data/raw/frpm2425_santaclara.csv
-Writes: data/cleaned/public_schools_frpm_santaclara_merged.csv
-         outputs/public_schools_frpm_santaclara_qa.txt
+Reads:  data/raw/sv_public_schools.csv, data/raw/frpm2425_santaclara.csv
+Writes: data/cleaned/public_schools_frpm_sv_merged.csv
+         outputs/public_schools_frpm_sv_qa.txt
 """
 
 from __future__ import annotations
@@ -19,10 +19,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "cleaning"))
 from frpm_io import FRPM_FULL_RENAME, normalize_frpm_columns, school_code_as_str
 
-DEFAULT_PUBLIC = ROOT / "data" / "raw" / "public_schools_filtered.csv"
+DEFAULT_PUBLIC = ROOT / "data" / "raw" / "sv_public_schools.csv"
 DEFAULT_FRPM = ROOT / "data" / "raw" / "frpm2425_santaclara.csv"
-DEFAULT_MERGED = ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_merged.csv"
-DEFAULT_QA = ROOT / "outputs" / "public_schools_frpm_santaclara_qa.txt"
+DEFAULT_MERGED = ROOT / "data" / "cleaned" / "public_schools_frpm_sv_merged.csv"
+DEFAULT_QA = ROOT / "outputs" / "public_schools_frpm_sv_qa.txt"
 
 NO_DATA = "No Data"
 

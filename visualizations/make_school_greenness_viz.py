@@ -12,14 +12,11 @@ sys.path.insert(0, str(ROOT))
 
 from analysis.visualization_config import VIS, apply_common_layout
 
-DEFAULT_GRENESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_500m.csv"
+DEFAULT_GRENESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_sv_100m.csv"
 DEFAULT_SCHOOLS_CSV = (
-    ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_analysis.csv"
+    ROOT / "data" / "cleaned" / "public_schools_frpm_sv_analysis.csv"
 )
 DEFAULT_OUTDIR = ROOT / "visualizations"
-
-CITIES_DEFAULT = ["San Jose", "Palo Alto", "Mountain View"]
-
 
 def load_greenness(greenness_csv: Path) -> pd.DataFrame:
     df = pd.read_csv(greenness_csv)
@@ -48,14 +45,16 @@ def merge_greenness_and_frpm(greenness: pd.DataFrame, schools: pd.DataFrame) -> 
     return merged
 
 
-def make_boxplot(df: pd.DataFrame, x: str, y: str, color: str, title: str):
+def make_boxplot(
+    df: pd.DataFrame, x: str, y: str, color: str, title: str, city_order: list[str]
+):
     fig = px.box(
         df,
         x=x,
         y=y,
         color=color,
         color_discrete_sequence=list(VIS.color_palette),
-        category_orders={x: CITIES_DEFAULT},
+        category_orders={x: city_order},
         points=False,
     )
     fig.update_xaxes(title_text=x)
@@ -63,14 +62,16 @@ def make_boxplot(df: pd.DataFrame, x: str, y: str, color: str, title: str):
     return apply_common_layout(fig, title=title)
 
 
-def make_scatter(df: pd.DataFrame, x: str, y: str, color: str, title: str):
+def make_scatter(
+    df: pd.DataFrame, x: str, y: str, color: str, title: str, city_order: list[str]
+):
     fig = px.scatter(
         df,
         x=x,
         y=y,
         color=color,
         color_discrete_sequence=list(VIS.color_palette),
-        category_orders={"city": CITIES_DEFAULT},
+        category_orders={"city": city_order},
         opacity=0.85,
     )
     # x is a numeric fraction (0-1); format it as percent for readable axis + hover.
@@ -94,20 +95,21 @@ def main() -> None:
     p.add_argument(
         "--cities",
         type=str,
-        default=",".join(CITIES_DEFAULT),
-        help="Comma-separated list of cities to include.",
+        default="",
+        help="Optional comma-separated list of cities to include (default: all cities).",
     )
     args = p.parse_args()
-
-    cities = [c.strip() for c in args.cities.split(",") if c.strip()]
-    if not cities:
-        raise SystemExit("No cities provided.")
 
     greenness = load_greenness(args.greenness_csv)
     schools = load_schools(args.schools_csv)
 
     df = merge_greenness_and_frpm(greenness, schools)
-    df = df[df["city"].isin(cities)].copy()
+    cities = [c.strip() for c in args.cities.split(",") if c.strip()]
+    if cities:
+        df = df[df["city"].isin(cities)].copy()
+    if df.empty:
+        raise SystemExit("No rows available after city filter.")
+    city_order = sorted(df["city"].dropna().astype(str).unique().tolist())
 
     # NDVI
     fig_ndvi = make_boxplot(
@@ -115,7 +117,8 @@ def main() -> None:
         x="city",
         y="ndvi_mean",
         color="city",
-        title="School NDVI mean (Sentinel-2) within 500m buffers",
+        title="School NDVI mean (Sentinel-2) within 100m buffers",
+        city_order=city_order,
     )
     # Tree canopy
     fig_canopy = make_boxplot(
@@ -123,7 +126,8 @@ def main() -> None:
         x="city",
         y="nlcd_canopy_mean",
         color="city",
-        title="School NLCD tree canopy mean within 500m buffers",
+        title="School NLCD tree canopy mean within 100m buffers",
+        city_order=city_order,
     )
     # High-canopy fraction
     fig_frac = make_boxplot(
@@ -131,7 +135,8 @@ def main() -> None:
         x="city",
         y="nlcd_high_canopy_frac",
         color="city",
-        title="School fraction of area with NLCD canopy >= 10% within 500m buffers",
+        title="School fraction of area with NLCD canopy >= 10% within 100m buffers",
+        city_order=city_order,
     )
     # FRPM relationships
     fig_ndvi_vs_frpm = make_scatter(
@@ -140,6 +145,7 @@ def main() -> None:
         y="ndvi_mean",
         color="city",
         title="NDVI mean vs FRPM percent by city",
+        city_order=city_order,
     )
     fig_canopy_vs_frpm = make_scatter(
         df,
@@ -147,26 +153,27 @@ def main() -> None:
         y="nlcd_canopy_mean",
         color="city",
         title="NLCD canopy mean vs FRPM percent by city",
+        city_order=city_order,
     )
 
     args.outdir.mkdir(parents=True, exist_ok=True)
-    (args.outdir / "school_ndvi_boxplot.html").write_text(
+    (args.outdir / "school_ndvi_boxplot_sv_100m.html").write_text(
         fig_ndvi.to_html(full_html=True, include_plotlyjs="cdn"),
         encoding="utf-8",
     )
-    (args.outdir / "school_canopy_boxplot.html").write_text(
+    (args.outdir / "school_canopy_boxplot_sv_100m.html").write_text(
         fig_canopy.to_html(full_html=True, include_plotlyjs="cdn"),
         encoding="utf-8",
     )
-    (args.outdir / "school_high_canopy_frac_boxplot.html").write_text(
+    (args.outdir / "school_high_canopy_frac_boxplot_sv_100m.html").write_text(
         fig_frac.to_html(full_html=True, include_plotlyjs="cdn"),
         encoding="utf-8",
     )
-    (args.outdir / "school_ndvi_vs_frpm_scatter.html").write_text(
+    (args.outdir / "school_ndvi_vs_frpm_scatter_sv_100m.html").write_text(
         fig_ndvi_vs_frpm.to_html(full_html=True, include_plotlyjs="cdn"),
         encoding="utf-8",
     )
-    (args.outdir / "school_canopy_vs_frpm_scatter.html").write_text(
+    (args.outdir / "school_canopy_vs_frpm_scatter_sv_100m.html").write_text(
         fig_canopy_vs_frpm.to_html(full_html=True, include_plotlyjs="cdn"),
         encoding="utf-8",
     )

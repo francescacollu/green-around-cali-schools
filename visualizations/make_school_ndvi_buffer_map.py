@@ -1,12 +1,12 @@
 """
 Interactive map: Esri World Imagery basemap with school buffers colored by NDVI mean.
 
-Reads the GEE greenness CSV (e.g. outputs/school_ndvi_nlcd_500m.csv) and writes HTML
+Reads the GEE greenness CSV (e.g. outputs/school_ndvi_nlcd_sv_100m.csv) and writes HTML
 under visualizations/.
 
 Example:
   python visualizations/make_school_ndvi_buffer_map.py \\
-    --greenness-csv outputs/school_ndvi_nlcd_500m.csv
+    --greenness-csv outputs/school_ndvi_nlcd_sv_100m.csv
 """
 
 from __future__ import annotations
@@ -24,8 +24,8 @@ sys.path.insert(0, str(ROOT))
 
 from analysis.visualization_config import VIS, ndvi_to_color
 
-DEFAULT_GREENNESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_500m.csv"
-DEFAULT_OUT = ROOT / "visualizations" / "school_ndvi_buffer_map.html"
+DEFAULT_GREENNESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_sv_100m.csv"
+DEFAULT_OUT = ROOT / "visualizations" / "school_ndvi_buffer_map_sv_100m.html"
 
 ESRI_WORLD_IMAGERY = (
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
@@ -51,7 +51,7 @@ def main() -> None:
     p.add_argument(
         "--buffer-m",
         type=float,
-        default=500.0,
+        default=100.0,
         help="Circle radius in meters (match GEE --buffer-m)",
     )
     p.add_argument(

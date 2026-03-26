@@ -12,9 +12,9 @@ sys.path.insert(0, str(ROOT))
 
 from analysis.visualization_config import VIS, apply_common_layout
 
-DEFAULT_GREENNESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_500m.csv"
-DEFAULT_FRPM_MERGED_CSV = ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_merged.csv"
-DEFAULT_OUTPATH = ROOT / "visualizations" / "frpm_vs_noneligible_conditional_ndvi_bin_probability.html"
+DEFAULT_GREENNESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_sv_100m.csv"
+DEFAULT_FRPM_MERGED_CSV = ROOT / "data" / "cleaned" / "public_schools_frpm_sv_merged.csv"
+DEFAULT_OUTPATH = ROOT / "visualizations" / "frpm_vs_noneligible_conditional_ndvi_bin_probability_sv_100m.html"
 
 
 def _require_columns(df: pd.DataFrame, required: set[str], name: str) -> None:
@@ -147,7 +147,7 @@ def main() -> None:
 
     fig = make_grouped_bar_chart(
         df_long,
-        title="Conditional NDVI bin probability by eligibility (10% bins)",
+        title="Conditional NDVI bin probability by eligibility (SV, 100m, 10% bins)",
         ordered_bin_labels=ordered_labels,
     )
 

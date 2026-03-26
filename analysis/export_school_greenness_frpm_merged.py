@@ -10,11 +10,11 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-DEFAULT_GRENESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_500m.csv"
+DEFAULT_GRENESS_CSV = ROOT / "outputs" / "school_ndvi_nlcd_sv_100m.csv"
 DEFAULT_SCHOOLS_CSV = (
-    ROOT / "data" / "cleaned" / "public_schools_frpm_santaclara_analysis.csv"
+    ROOT / "data" / "cleaned" / "public_schools_frpm_sv_analysis.csv"
 )
-DEFAULT_OUTPUT_CSV = ROOT / "outputs" / "school_ndvi_nlcd_frpm_500m.csv"
+DEFAULT_OUTPUT_CSV = ROOT / "outputs" / "school_ndvi_nlcd_frpm_sv_100m.csv"
 
 
 GRENESS_REQUIRED_COLS = {
@@ -96,8 +96,10 @@ def merge_greenness_and_frpm(
 
     missing_frpm = int(merged["percent_eligible_frpm_k12"].isna().sum())
     if missing_frpm:
-        raise ValueError(
-            f"After merge, {missing_frpm} row(s) are missing percent_eligible_frpm_k12 for known `ID`s."
+        print(
+            f"Warning: After merge, {missing_frpm} row(s) are missing "
+            "percent_eligible_frpm_k12; retaining rows with null FRPM.",
+            file=sys.stderr,
         )
 
     # Drop coordinate duplicates. Output keeps only `lat`/`lon` from the greenness CSV.
@@ -122,7 +124,7 @@ def merge_greenness_and_frpm(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Merge NDVI/NLCD greenness (500m) with FRPM analysis fields by school `ID`."
+        description="Merge NDVI/NLCD greenness (100m) with FRPM analysis fields by school `ID`."
     )
     p.add_argument("--greenness", type=Path, default=DEFAULT_GRENESS_CSV)
     p.add_argument("--schools", type=Path, default=DEFAULT_SCHOOLS_CSV)

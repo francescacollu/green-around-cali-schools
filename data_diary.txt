@@ -5,6 +5,8 @@ Use as comparison:
 
 Public school data downloaded by https://www.cde.ca.gov/ds/si/ds/pubschls.asp
 
+Cities in Silicon Valley from: https://visitsiliconvalley.org/explore-silicon-valley/
+
 At https://www.cde.ca.gov/ds/ad/filessp.asp I downloaded data on Free or Reduced-Price Meal. At https://www.cde.ca.gov/ds/ad/fsspfrpm.asp you have the file structure.
 
 Kept only public schools, non-charter, with SOCType 60, 61, 62, 64, 65, 66, 67.
