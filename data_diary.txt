@@ -1,0 +1,38 @@
+Focus analysis on San Jose.
+Use as comparison:
+- Palo Alto
+- Mountain View
+
+Public school data downloaded by https://www.cde.ca.gov/ds/si/ds/pubschls.asp
+
+At https://www.cde.ca.gov/ds/ad/filessp.asp I downloaded data on Free or Reduced-Price Meal. At https://www.cde.ca.gov/ds/ad/fsspfrpm.asp you have the file structure.
+
+Kept only public schools, non-charter, with SOCType 60, 61, 62, 64, 65, 66, 67.
+Check the two schools that you can find in outputs/public_schools_frpm_santaclara_qa.txt with mismatching names (the ones reported in FRPM are the ones of closed schools).
+
+NDVI + USGS NLCD (National Land Cover Database).
+Indicators used:
+
+- ndvi_mean: average NDVI "greenness" value inside each school's buffer (500m):
+1. Built an NDVI image from Sentinel-2 using (NIR-Red)/(NIR+Red) with Sentinel-2 scaled by 0.0001 and called that band NDVI
+2. Took a  median composite of NDVI over the date range (2023-06-01 to 2025-09-30) after masking cloudy pixels
+3. Computed ndvi_mean as the mean NDVI over the buffer region  
+"How green is this buffer from space, including grass/shrubs/crops, over your S2 window?"
+
+- nlcd_canopy_mean: average percent tree canopy cover inside each school's buffer, using NLCD Tree Canopy Cover data:
+1. Pulled the NLCD canopy band (from the NLCD TCC collection for NLCD_YEAR=2023)
+2. Computed nlcd_canopy_mean as the mean of that canopy % band over the buffer
+"How much tree canopy does NLCD assign here (2023)?"
+
+- nlcd_high_canopy_frac: fraction of the buffer area whose NLCD canopy is high, where high means canopy percent is greater or equal to a threshold:
+1. Created a binary mask where pixels are 1 if nlcd_canopy >= threshold_pct, otherwise 0
+2. Took the mean of that mask over the buffer
+3. The default threshold is 10%
+"What share of the buffer has at least 10% tree canopy?"
+
+Resolution: 10 m for NDVI, 30 m for NLCD.
+
+
+---Inequity in green resources by FRPM
+
+! Remember to cite datasets used (see for instance: https://developers.google.com/earth-engine/datasets/catalog/USGS_NLCD_RELEASES_2023_REL_TCC_v2023-5#terms-of-use)

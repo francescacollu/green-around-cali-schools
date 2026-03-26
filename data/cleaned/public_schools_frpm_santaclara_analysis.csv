@@ -1,0 +1,183 @@
+ID,school_name,city,address,latitude,longitude,percent_eligible_frpm_k12
+43693696046122,Ben Painter Elementary,San Jose,500 Rough and Ready Road,37.37495,-121.84331,0.519
+43693696046213,Linda Vista Elementary,San Jose,100 Kirk Avenue,37.376934,-121.82372,0.682
+43693696046221,Lyndale Elementary,San Jose,13901 Nordyke Drive,37.359746,-121.82492,0.8290000000000001
+43693696046247,Aptitud Community Academy at Goss,San Jose,2475 Van Winkle Lane,37.34995,-121.8314,0.8909999999999999
+43693696046254,Millard McCollam Elementary,San Jose,3311 Lucian Avenue,37.380472,-121.83312,0.535
+43693696046270,O. S. Hubbard Elementary,San Jose,1680 Foley Avenue,37.330237,-121.83946,0.85
+43693696046304,San Antonio Elementary,San Jose,1721 East San Antonio Street,37.350025,-121.85234,0.917
+43693696046320,Thomas P. Ryan Elementary,San Jose,1241 McGinness Avenue,37.350062,-121.82257,0.838
+43693696046338,William Sheppard Middle,San Jose,480 Rough and Ready Road,37.37451,-121.843,0.7140000000000001
+43693696089270,Ocala Middle,San Jose,2800 Ocala Avenue,37.340385,-121.82046,0.7929999999999999
+43693776046379,Noble Elementary,San Jose,3466 Grossmont Drive,37.396302,-121.8391,0.235
+43693776046387,Northwood Elementary,San Jose,2760 East Trimble Road,37.40946,-121.88134,0.133
+43693776046395,Piedmont Middle,San Jose,955 Piedmont Road,37.390727,-121.84264,0.34
+43693776067177,Ruskin Elementary,San Jose,1401 Turlock Lane,37.400282,-121.85589,0.155
+43693776068928,Morrill Middle,San Jose,1970 Morrill Avenue,37.410219,-121.87111,0.349
+43693776093033,Sierramont Middle,San Jose,3155 Kimlee Drive,37.403132,-121.85593,0.248
+43693776093041,Vinci Park Elementary,San Jose,1311 Vinci Park Way,37.380943,-121.87333,0.312
+43693776095335,Brooktree Elementary,San Jose,1781 Olivetree Drive,37.398513,-121.88005,0.406
+43693776095343,Majestic Way Elementary,San Jose,1855 Majestic Way,37.410648,-121.85723,0.299
+43693776095350,Summerdale Elementary,San Jose,1100 Summerdale Drive,37.389589,-121.85196,0.38299999999999995
+43693850133439,Steindorf STEAM K-8 Magnet,San Jose,3001 Ross Avenue,37.266653,-121.92053,0.047
+43693856046411,Bagby Elementary,San Jose,1840 Harris Avenue,37.278715,-121.92193,0.149
+43694014330239,Leigh High,San Jose,5210 Leigh Avenue,37.24331,-121.92258,0.18
+43694014330866,Branham High,San Jose,1570 Branham Lane,37.254576,-121.89957,0.314
+43694014331955,Del Mar High,San Jose,1224 Del Mar Avenue,37.303262,-121.9303,0.696
+43694196046882,Joaquin Miller Middle,San Jose,6151 Rainbow Drive,37.301254,-122.0121,0.135
+43694196046908,John Muir Elementary,San Jose,6560 Hanover Drive,37.300409,-122.01946,0.084
+43694196046965,Manuel De Vargas Elementary,San Jose,5050 Moorpark Avenue,37.310596,-121.99102,0.449
+43694196047005,Nelson S. Dilworth Elementary,San Jose,1101 Strayer Drive,37.306291,-122.00688,0.196
+43694196047039,Murdock-Portal Elementary,San Jose,1188 Wunderlich Drive,37.30381,-121.99952,0.085
+43694274330015,Yerba Buena High,San Jose,1855 Lucretia Avenue,37.320791,-121.84831,0.619
+43694274330023,Santa Teresa High,San Jose,6150 Snell Road,37.235085,-121.8305,0.27899999999999997
+43694274330031,Independence High,San Jose,617 North Jackson Avenue,37.370953,-121.85602,0.47
+43694274330692,Evergreen Valley High,San Jose,3300 Quimby Road,37.325201,-121.77866,0.22399999999999998
+43694274332995,Andrew P. Hill High,San Jose,3200 Senter Road,37.291923,-121.83173,0.6759999999999999
+43694274333639,James Lick High,San Jose,57 North White Road,37.368046,-121.83009,0.6579999999999999
+43694274334900,Mt. Pleasant High,San Jose,1750 South White Road,37.345646,-121.80948,0.625
+43694274335204,Oak Grove High,San Jose,285 Blossom Hill Road,37.251575,-121.81892,0.562
+43694274335428,William C. Overfelt High,San Jose,1835 Cunningham Avenue,37.330593,-121.82838,0.627
+43694274335907,Piedmont Hills High,San Jose,1377 Piedmont Road,37.403788,-121.84899,0.301
+43694274337903,Silver Creek High,San Jose,3434 Silver Creek Road,37.304331,-121.80831,0.446
+43694350102616,Carolyn A. Clark Elementary,San Jose,3701 Rue Mirassou Drive,37.321714,-121.76937,0.183
+43694356047120,Cadwallader Elementary,San Jose,3799 Cadwallader Avenue,37.306698,-121.78763,0.433
+43694356047138,Evergreen Elementary,San Jose,3010 Fowler Road,37.310525,-121.77793,0.153
+43694356047146,Holly Oak Elementary,San Jose,2995 Rossmore Way,37.31875,-121.79765,0.537
+43694356047153,Katherine R. Smith Elementary,San Jose,2025 Clarice Drive,37.326253,-121.82206,0.737
+43694356047161,O. B. Whaley Elementary,San Jose,2655 Alvin Avenue,37.31619,-121.82424,0.679
+43694356047179,Quimby Oak Middle,San Jose,3190 Quimby Road,37.324774,-121.78708,0.305
+43694356067193,Cedar Grove Elementary,San Jose,2702 Sugar Plum Drive,37.331164,-121.79361,0.483
+43694356085690,George V. LeyVa Intermediate,San Jose,1865 Monrovia Drive,37.314281,-121.81263,0.617
+43694356095988,John J. Montgomery Elementary,San Jose,2010 Daniel Maloney Drive,37.307734,-121.80108,0.589
+43694356102081,Norwood Creek Elementary,San Jose,3241 Remington Way,37.328173,-121.78862,0.27
+43694356105787,Millbrook Elementary,San Jose,3200 Millbrook Drive,37.319487,-121.78805,0.308
+43694356110159,Chaboya Middle,San Jose,3276 Cortona Drive,37.312333,-121.768,0.16399999999999998
+43694356111942,Silver Oak Elementary,San Jose,5000 Farnsworth Drive,37.284241,-121.77369,0.087
+43694356115851,Tom Matsumoto Elementary,San Jose,4121 Mackin Woods Lane,37.312017,-121.76502,0.133
+43694356117956,James Franklin Smith Elementary,San Jose,2220 Woodbury Lane,37.297368,-121.78799,0.10099999999999999
+43694500127225,College Connection Academy,San Jose,1855 Lucretia Avenue,37.320115,-121.84751,0.653
+43694506047195,Franklin Elementary,San Jose,420 Tully Road,37.305453,-121.85107,0.8079999999999999
+43694506047211,Captain Jason M. Dahl Elementary,San Jose,3200 Water Street,37.288155,-121.84003,0.856
+43694506047229,Bridges Academy,San Jose,1702 Mclaughlin Avenue,37.325456,-121.84646,0.894
+43694506047237,G. W. Hellyer Elementary,San Jose,725 Hellyer Ave,37.284831,-121.82029,0.789
+43694506047245,Jeanne R. Meadows Elementary,San Jose,1250 Taper Lane,37.320969,-121.83953,0.8109999999999999
+43694506047252,Santee Elementary,San Jose,1313 Audubon Drive,37.328062,-121.84671,0.899
+43694506047260,Lairon College Preparatory Academy,San Jose,3975 Mira Loma,37.28238,-121.82885,0.818
+43694506047278,Sylvandale Middle,San Jose,653 Sylvandale Avenue,37.287864,-121.82531,0.745
+43694506067201,Robert F. Kennedy Elementary,San Jose,1602 Lucretia Avenue,37.324997,-121.8524,0.903
+43694506071542,Stonegate Elementary,San Jose,2605 Gassmann Drive,37.308515,-121.83635,0.76
+43694506105795,Windmill Springs Elementary,San Jose,2880 Aetna Way,37.306212,-121.82428,0.747
+43694506115943,"Shirakawa (George, Sr.) Elementary",San Jose,665 Wool Creek Drive,37.316085,-121.84974,0.8270000000000001
+43694684334421,Lynbrook High,San Jose,1280 Johnson Avenue,37.300713,-122.00647,0.065
+43695186047500,Springer Elementary,Mountain View,1120 Rose Avenue,37.371011,-122.09402,0.049
+43695426047575,Luther Burbank Elementary,San Jose,4 Wabash Avenue,37.323556,-121.9267,0.6970000000000001
+43695750129940,Latimer,San Jose,4250 Latimer Avenue,37.292391,-121.97803,0.475
+43695756047740,Country Lane Elementary,San Jose,5140 Country Lane,37.298472,-121.99193,0.3
+43695756047765,Easterbrook Discovery,San Jose,4835 Doyle Road,37.303397,-121.98663,0.222
+43695756047781,Moreland Middle,San Jose,4600 Student Lane,37.290191,-121.98411,0.38299999999999995
+43695756047799,George C. Payne Elementary,San Jose,3750 Gleason Avenue,37.297438,-121.96742,0.314
+43695756047807,Gussie M. Baker Elementary,San Jose,4845 Bucknall Road,37.283415,-121.98712,0.19
+43695756047831,Leroy Anderson Elementary,San Jose,4000 Rhoda Drive,37.30466,-121.9715,0.8540000000000001
+43695836095392,Los Paseos Elementary,San Jose,121 Avenida Grande,37.228983,-121.76739,0.40399999999999997
+43695836100325,Martin Murphy Middle,San Jose,141 Avenida Espana,37.225583,-121.76693,0.455
+43695910132373,Gabriela Mistral Elementary,Mountain View,505 Escuela Avenue,37.394899,-122.09414,0.484
+43695910138750,Jose Antonio Vargas Elementary,Mountain View,220 North Whisman Road,37.393904,-122.06109,0.23399999999999999
+43695916047955,Benjamin Bubb Elementary,Mountain View,525 Hans Avenue,37.379144,-122.08176,0.17300000000000001
+43695916047963,Edith Landels Elementary,Mountain View,115 West Dana Street,37.388743,-122.07055,0.21100000000000002
+43695916047971,Amy Imai Elementary,Mountain View,253 Martens Avenue,37.375266,-122.07434,0.111
+43695916047989,Isaac Newton Graham Middle,Mountain View,1175 Castro Street,37.381793,-122.086,0.263
+43695916048003,Mariano Castro Elementary,Mountain View,500 Toft Street,37.394025,-122.09204,0.8270000000000001
+43695916049464,Stevenson Elementary,Mountain View,750 San Pierre Way,37.403342,-122.08432,0.134
+43695916049472,Crittenden Middle,Mountain View,1701 Rock Street,37.412214,-122.08588,0.237
+43695916049480,Monta Loma Elementary,Mountain View,460 Thompson Avenue,37.408196,-122.09807,0.295
+43695916049514,Theuerkauf Elementary,Mountain View,1625 San Luis Avenue,37.405889,-122.08497,0.386
+43696094334728,Mountain View High,Mountain View,3535 Truman Avenue,37.358192,-122.06863,0.127
+43696176048037,August Boeger Middle,San Jose,1944 Flint Avenue,37.347153,-121.80143,0.8190000000000001
+43696176048060,Mt. Pleasant Elementary,San Jose,14275 Candler Drive,37.354085,-121.81104,0.797
+43696176048078,Robert Sanders Elementary,San Jose,3411 Rocky Mountain Drive,37.351574,-121.80177,0.7859999999999999
+43696176067227,Valle Vista Elementary,San Jose,1966 Flint Avenue,37.346613,-121.79994,0.657
+43696256048086,Anderson (Alex) Elementary,San Jose,5800 Calpine Drive,37.24674,-121.81194,0.5589999999999999
+43696256048094,Davis (Caroline) Intermediate,San Jose,5035 Edenview Drive,37.266422,-121.81192,0.618
+43696256048102,Christopher Elementary,San Jose,565 Coyote Road,37.279388,-121.81761,0.639
+43696256048110,Frost (Earl) Elementary,San Jose,530 Gettysburg Drive,37.247514,-121.83706,0.332
+43696256048128,Edenvale Elementary,San Jose,285 Azucar Avenue,37.26157,-121.80265,0.6809999999999999
+43696256048177,Stipe (Samuel) Elementary,San Jose,5000 Lyng Drive,37.271339,-121.80652,0.606
+43696256067243,Santa Teresa Elementary,San Jose,6200 Encinal Drive,37.234751,-121.7959,0.29
+43696256068167,Herman (Leonard) Intermediate,San Jose,5955 Blossom Avenue,37.239738,-121.83975,0.311
+43696256072144,Sakamoto Elementary,San Jose,6280 Shadelands Drive,37.230822,-121.83919,0.266
+43696256072151,Del Roble Elementary,San Jose,5345 Avenida Almendros,37.256532,-121.83565,0.419
+43696256072177,Bernal Intermediate,San Jose,6610 San Ignacio Avenue,37.227088,-121.79097,0.419
+43696256088306,Oak Ridge Elementary,San Jose,5920 Bufkin Drive,37.241059,-121.82115,0.345
+43696256093066,Parkview Elementary,San Jose,330 Bluefield Drive,37.271595,-121.84578,0.645
+43696256095400,Baldwin (Julia) Elementary,San Jose,280 Martinvale Lane,37.224098,-121.78423,0.35100000000000003
+43696256097430,Taylor (Bertha) Elementary,San Jose,410 Sautner Drive,37.231017,-121.80809,0.24100000000000002
+43696256099451,Hayes Elementary,San Jose,5035 Poston Drive,37.261806,-121.82651,0.564
+43696256116081,Ledesma (Rita) Elementary,San Jose,1001 Schoolhouse Road,37.242642,-121.76267,0.35
+43696336048185,Orchard Elementary,San Jose,921 Fox Lane,37.388461,-121.9002,0.501
+43696414332904,Henry M. Gunn High,Palo Alto,780 Arastradero Road,37.399966,-122.13179,0.11699999999999999
+43696414335782,Palo Alto High,Palo Alto,50 Embarcadero Road,37.437857,-122.15779,0.133
+43696416048193,Addison Elementary,Palo Alto,650 Addison Avenue,37.446187,-122.15111,0.172
+43696416048201,Herbert Hoover Elementary,Palo Alto,445 East Charleston Road,37.418279,-122.11344,0.067
+43696416048235,El Carmelo Elementary,Palo Alto,3024 Bryant Street,37.425802,-122.13034,0.184
+43696416048243,Ohlone Elementary,Palo Alto,950 Amarillo Avenue,37.439596,-122.12383,0.084
+43696416048268,Fairmeadow Elementary,Palo Alto,500 East Meadow Drive,37.422224,-122.11843,0.122
+43696416048292,Duveneck Elementary,Palo Alto,705 Alester Avenue,37.449945,-122.13482,0.136
+43696416048300,Greendell,Palo Alto,4120 Middlefield Road,37.417325,-122.10565,0.077
+43696416048326,Juana Briones Elementary,Palo Alto,4100 Orme Street,37.408634,-122.1319,0.10800000000000001
+43696416048359,Palo Verde Elementary,Palo Alto,3450 Louis Road,37.431406,-122.11369,0.126
+43696416048375,Packard Children's Hospital/Stanford,Palo Alto,725 Welch Road,37.437362,-122.17484,0.2
+43696416048409,Walter Hays Elementary,Palo Alto,1525 Middlefield Road,37.4424,-122.14356,0.17
+43696416060065,Frank S. Greene Jr. Middle,Palo Alto,750 North California Avenue,37.439277,-122.13483,0.16899999999999998
+43696416060081,Jane Lathrop Stanford Middle,Palo Alto,480 East Meadow Drive,37.422025,-122.11881,0.107
+43696416115562,Barron Park Elementary,Palo Alto,800 Barron Avenue,37.412612,-122.13642,0.299
+43696416118707,Ellen Fletcher Middle,Palo Alto,655 Arastradero Road,37.404638,-122.12726,0.136
+43696664330080,Gunderson High,San Jose,620 Gaundabert Lane,37.258238,-121.85269,0.546
+43696664333522,Leland High,San Jose,6677 Camden Avenue,37.220338,-121.84737,0.113
+43696664333795,Abraham Lincoln High,San Jose,555 Dana Avenue,37.329212,-121.92388,0.562
+43696664335949,Pioneer High,San Jose,1290 Blossom Hill Road,37.247184,-121.88445,0.308
+43696664337200,San Jose High,San Jose,275 North 24th Street,37.350457,-121.87122,0.6990000000000001
+43696664338950,Willow Glen High,San Jose,2001 Cottle Avenue,37.291588,-121.8964,0.38799999999999996
+43696666048417,Allen at Steinbeck,San Jose,820 Steinbeck Drive,37.247281,-121.85641,0.69
+43696666048425,Almaden Elementary,San Jose,1295 Dentwood Drive,37.250931,-121.88411,0.718
+43696666048433,Anne Darling Elementary,San Jose,333 North 33rd Street,37.356596,-121.86446,0.731
+43696666048474,Booksin Elementary,San Jose,1590 Dry Creek Road,37.288713,-121.90714,0.11900000000000001
+43696666048490,Canoas Elementary,San Jose,880 Wren Drive,37.284721,-121.87654,0.716
+43696666048516,Empire Gardens Elementary,San Jose,1060 East Empire Street,37.354642,-121.87616,0.706
+43696666048532,Gardner Elementary,San Jose,502 Illinois Avenue,37.321387,-121.89641,0.701
+43696666048540,Grant Elementary,San Jose,470 East Jackson Street,37.351639,-121.88858,0.6970000000000001
+43696666048565,Hammer Montessori at Galarza Elementary,San Jose,1610 Bird Avenue,37.303525,-121.88686,0.201
+43696666048599,Horace Mann Elementary,San Jose,55 North Seventh Street,37.33998,-121.88486,0.7440000000000001
+43696666048649,Lowell Elementary,San Jose,625 South Seventh Street,37.329688,-121.87718,0.851
+43696666048656,Merritt Trace Elementary,San Jose,651 Dana Avenue,37.330909,-121.9258,0.5429999999999999
+43696666048664,Reed Elementary,San Jose,1524 Jacob Avenue,37.264637,-121.89461,0.242
+43696666048672,River Glen,San Jose,1088 Broadway,37.312129,-121.89924,0.469
+43696666048680,Schallenberger Elementary,San Jose,1280 Koch Lane,37.280808,-121.88786,0.255
+43696666048698,Selma Olinder Elementary,San Jose,890 East William,37.33834,-121.86659,0.8029999999999999
+43696666048706,Simonds Elementary,San Jose,6515 Grapevine Way,37.220493,-121.8684,0.092
+43696666048714,Terrell Elementary,San Jose,3925 Pearl Avenue,37.270841,-121.86841,0.541
+43696666048722,Hacienda Science/Environmental Magnet,San Jose,1290 Kimberly Drive,37.26967,-121.8839,0.223
+43696666048730,Walter L. Bachrodt Elementary,San Jose,102 Sonora Avenue,37.363361,-121.91285,0.613
+43696666048748,Washington Elementary,San Jose,100 Oak Street,37.321793,-121.88158,0.83
+43696666048755,Williams Elementary,San Jose,1150 Rajkovich Way,37.208223,-121.85092,0.08199999999999999
+43696666048763,Willow Glen Elementary,San Jose,1425 Lincoln Avenue,37.30321,-121.89687,0.359
+43696666060099,Bret Harte Middle,San Jose,7050 Bret Harte Drive,37.209431,-121.83816,0.11900000000000001
+43696666060107,Willow Glen Middle,San Jose,2105 Cottle Avenue,37.291174,-121.89613,0.36700000000000005
+43696666060115,John Muir Middle,San Jose,1260 Branham Lane,37.261393,-121.88237,0.542
+43696666062103,Muwekma Ohlone Middle,San Jose,850 North Second Street,37.35284,-121.90149,0.687
+43696666062111,Herbert Hoover Middle,San Jose,1635 Park Avenue,37.332437,-121.92231,0.63
+43696666093074,Los Alamitos Elementary,San Jose,6130 Silberman Avenue,37.22786,-121.88099,0.121
+43696666093082,Graystone Elementary,San Jose,6982 Shearwater Drive,37.210665,-121.83774,0.08800000000000001
+43696666093090,Rachel Carson Elementary,San Jose,4245 Meg Drive,37.270482,-121.85548,0.47200000000000003
+43696666095418,Castillero Middle,San Jose,6384 Leyland Park Drive,37.221497,-121.88191,0.32
+43696666119010,Ernesto Galarza Elementary,San Jose,1610 Bird Avenue,37.303525,-121.88686,0.773
+43696740140475,Abram Agnew Elementary,San Jose,3534 Zanker Road,37.40643,-121.93425,0.25
+43696740140483,Dolores Huerta Middle,San Jose,3556 Zanker Road,37.406908,-121.93501,0.37
+43696740141283,Kathleen MacDonald High,San Jose,3588 Zanker Road,37.408099,-121.93356,0.318
+43697086049316,Carlton Elementary,San Jose,2421 Carlton Avenue,37.247604,-121.9459,0.053
+43697086049332,Dartmouth Middle,San Jose,5575 Dartmouth Drive,37.239598,-121.89671,0.174
+43697086049357,Guadalupe Elementary,San Jose,6044 Vera Cruz Drive,37.228769,-121.89693,0.08199999999999999
+43697086049373,Lietz Elementary,San Jose,5300 Carter Avenue,37.243765,-121.90302,0.23199999999999998
+43697086049407,Noddin Elementary,San Jose,1755 Gilda Way,37.237773,-121.91388,0.152
+43697086049415,Oster Elementary,San Jose,1855 Lencar Way,37.255483,-121.91957,0.128
+43697086049449,Union Middle,San Jose,2130 Los Gatos-Almaden Road,37.242736,-121.9344,0.078
