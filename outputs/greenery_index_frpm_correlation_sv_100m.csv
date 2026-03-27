@@ -1,0 +1,2 @@
+dataset,metric_col,buffer_m,n,pearson_r,pearson_p_two_sided,spearman_r,spearman_p_two_sided
+school_ndvi_nlcd_frpm_sv_100m.csv,greenery_index_ndvi_nlcd,100.0,298,-0.3325835149112761,3.9675987833944806e-09,-0.3639762640155646,9.146245260227638e-11

@@ -1,0 +1,2 @@
+dataset,buffer_m,n,pearson_r,pearson_p_two_sided,spearman_r,spearman_p_two_sided
+school_ndvi_nlcd_frpm_sv_100m.csv,100.0,298,-0.30334378445321225,9.249262886847321e-08,-0.3217501485727926,1.3254807363405298e-08

@@ -15,6 +15,8 @@ DEFAULT_SCHOOLS_CSV = (
     ROOT / "data" / "cleaned" / "public_schools_frpm_sv_analysis.csv"
 )
 DEFAULT_OUTPUT_CSV = ROOT / "outputs" / "school_ndvi_nlcd_frpm_sv_100m.csv"
+GREENERY_INDEX_MIN = -3.0
+GREENERY_INDEX_MAX = 3.0
 
 
 GRENESS_REQUIRED_COLS = {
@@ -36,6 +38,21 @@ SCHOOLS_REQUIRED_COLS = {
     "longitude",
     "percent_eligible_frpm_k12",
 }
+
+
+def _zscore(series: pd.Series) -> pd.Series:
+    mean = series.mean(skipna=True)
+    std = series.std(skipna=True, ddof=0)
+    if pd.isna(std) or std == 0:
+        return pd.Series(0.0, index=series.index)
+    return (series - mean) / std
+
+
+def _minmax_scale_fixed(series: pd.Series, lower: float, upper: float) -> pd.Series:
+    if upper <= lower:
+        raise ValueError("upper bound must be greater than lower bound")
+    scaled = (series - lower) / (upper - lower)
+    return scaled.clip(lower=0.0, upper=1.0)
 
 
 def _ensure_columns(df: pd.DataFrame, required: set[str], *, name: str) -> None:
@@ -105,6 +122,18 @@ def merge_greenness_and_frpm(
     # Drop coordinate duplicates. Output keeps only `lat`/`lon` from the greenness CSV.
     merged = merged.drop(columns=["latitude", "longitude"])
 
+    # Balanced two-component greenery index with fixed-bound scaling:
+    # raw = 0.5 * z(ndvi_mean) + 0.5 * z(nlcd_canopy_mean)
+    # scaled = minmax(raw, lower=-3.0, upper=3.0), clipped to [0, 1]
+    ndvi_z = _zscore(merged["ndvi_mean"])
+    canopy_z = _zscore(merged["nlcd_canopy_mean"])
+    raw_greenery_index = 0.5 * ndvi_z + 0.5 * canopy_z
+    merged["greenery_index_ndvi_nlcd"] = _minmax_scale_fixed(
+        raw_greenery_index,
+        lower=GREENERY_INDEX_MIN,
+        upper=GREENERY_INDEX_MAX,
+    )
+
     out_cols = [
         "ID",
         "school",
@@ -115,6 +144,7 @@ def merge_greenness_and_frpm(
         "lon",
         "ndvi_mean",
         "nlcd_canopy_mean",
+        "greenery_index_ndvi_nlcd",
         "nlcd_high_canopy_frac",
         "percent_eligible_frpm_k12",
     ]

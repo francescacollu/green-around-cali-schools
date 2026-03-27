@@ -15,7 +15,7 @@ Check the two schools that you can find in outputs/public_schools_frpm_santaclar
 NDVI + USGS NLCD (National Land Cover Database).
 Indicators used:
 
-- ndvi_mean: average NDVI "greenness" value inside each school's buffer (500m):
+- ndvi_mean: average NDVI "greenness" value inside each school's buffer (500m/100m):
 1. Built an NDVI image from Sentinel-2 using (NIR-Red)/(NIR+Red) with Sentinel-2 scaled by 0.0001 and called that band NDVI
 2. Took a  median composite of NDVI over the date range (2023-06-01 to 2025-09-30) after masking cloudy pixels
 3. Computed ndvi_mean as the mean NDVI over the buffer region  
@@ -38,3 +38,24 @@ Resolution: 10 m for NDVI, 30 m for NLCD.
 ---Inequity in green resources by FRPM
 
 ! Remember to cite datasets used (see for instance: https://developers.google.com/earth-engine/datasets/catalog/USGS_NLCD_RELEASES_2023_REL_TCC_v2023-5#terms-of-use)
+
+***
+CORRELATION NDVI vs FRPM
+With the usual statistical meaning of “significant,” the results indicate a statistically significant association between school-level NDVI and FRPM share (SV, 100m buffer).
+
+- Pearson correlation: (r \approx -0.303), p ≈ (9.25\times 10^{-8})
+- Spearman correlation: (r \approx -0.322), p ≈ (1.33\times 10^{-8})
+- n = 298 schools
+
+Because both p-values are far below common thresholds (e.g., 0.05), we can say the data provide strong evidence that the correlation is not 0 in this sample.
+
+Two important caveats:
+- direction: it’s negative (higher FRPM share tends to be associated with lower NDVI around the school, on average).
+- interpretation: correlation is not causation (this doesn’t, by itself, establish that FRPM “causes” NDVI differences or vice versa).
+***
+
+Visuals:
+Map of schools colored by NDVI/NLCD with toggle concerning wealth
+Conditional probability of students to go to a more or less green school
+Scatter plot of school greenness vs poor students percentage
+

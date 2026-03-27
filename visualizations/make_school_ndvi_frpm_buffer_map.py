@@ -35,7 +35,7 @@ CARTO_ATTR = "&copy; OpenStreetMap contributors &copy; CARTO"
 
 def load_greenness_for_map(path: Path) -> pd.DataFrame:
     df = pd.read_csv(path)
-    required = {"ID", "lat", "lon", "ndvi_mean"}
+    required = {"ID", "lat", "lon"}
     missing = required - set(df.columns)
     if missing:
         raise ValueError(f"Greenness CSV missing columns: {sorted(missing)}")
@@ -70,10 +70,16 @@ def main() -> None:
     p.add_argument("--greenness-csv", type=Path, default=DEFAULT_GRENESS_CSV)
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     p.add_argument(
+        "--metric-col",
+        type=str,
+        default="ndvi_mean",
+        help="Numeric metric column used for marker color.",
+    )
+    p.add_argument(
         "--buffer-m",
         type=float,
         default=100.0,
-        help="GEE buffer radius used to compute NDVI mean (for labeling/reference; markers are dots).",
+        help="GEE buffer radius used to compute metrics (for labeling/reference; markers are dots).",
     )
     p.add_argument(
         "--schools-merged-csv",
@@ -91,37 +97,39 @@ def main() -> None:
         "--vmin",
         type=float,
         default=None,
-        help="Colormap minimum NDVI (default: config or data min).",
+        help="Colormap minimum for metric (default: config or data min).",
     )
     p.add_argument(
         "--vmax",
         type=float,
         default=None,
-        help="Colormap maximum NDVI (default: config or data max).",
+        help="Colormap maximum for metric (default: config or data max).",
     )
     args = p.parse_args()
 
     df = load_greenness_for_map(args.greenness_csv)
+    if args.metric_col not in df.columns:
+        raise ValueError(f"Greenness CSV missing columns: {sorted({args.metric_col} - set(df.columns))}")
     if args.frpm_col not in df.columns:
         raise ValueError(f"Greenness CSV missing columns: {sorted({args.frpm_col} - set(df.columns))}")
     df = df[pd.to_numeric(df["lat"], errors="coerce").notna()].copy()
     df = df[pd.to_numeric(df["lon"], errors="coerce").notna()].copy()
     df["lat"] = df["lat"].astype(float)
     df["lon"] = df["lon"].astype(float)
-    df["ndvi_mean"] = pd.to_numeric(df["ndvi_mean"], errors="coerce")
+    df[args.metric_col] = pd.to_numeric(df[args.metric_col], errors="coerce")
     df[args.frpm_col] = pd.to_numeric(df[args.frpm_col], errors="coerce")
-    df = df[df["ndvi_mean"].notna()].copy()
+    df = df[df[args.metric_col].notna()].copy()
     df = df[df[args.frpm_col].notna()].copy()
     df = df[df[args.frpm_col].between(0.0, 1.0)].copy()
     if df.empty:
-        raise SystemExit("No rows with valid lat/lon, ndvi_mean, and FRPM in [0, 1].")
+        raise SystemExit(f"No rows with valid lat/lon, {args.metric_col}, and FRPM in [0, 1].")
 
     vmin = args.vmin if args.vmin is not None else VIS.ndvi_map_vmin
     vmax = args.vmax if args.vmax is not None else VIS.ndvi_map_vmax
     if vmin is None:
-        vmin = float(df["ndvi_mean"].min())
+        vmin = float(df[args.metric_col].min())
     if vmax is None:
-        vmax = float(df["ndvi_mean"].max())
+        vmax = float(df[args.metric_col].max())
     if vmax < vmin:
         vmin, vmax = vmax, vmin
 
@@ -157,12 +165,12 @@ def main() -> None:
     for _, row in df.iterrows():
         lat = float(row["lat"])
         lon = float(row["lon"])
-        ndvi = float(row["ndvi_mean"])
+        metric_val = float(row[args.metric_col])
         frpm = float(row[args.frpm_col])
         radius_px = float(row["radius_px"])
 
         color = ndvi_to_color(
-            ndvi,
+            metric_val,
             vmin,
             vmax,
             low_hex=NDVI_LOW_HEX,
@@ -177,7 +185,7 @@ def main() -> None:
             f"<b>{html.escape(school_name)}</b>"
             f"<br>{html.escape(city)}"
             f"<br>FRPM: {frpm_pct:.1f}%"
-            f"<br>NDVI mean: {ndvi:.4f}"
+            f"<br>{html.escape(args.metric_col)}: {metric_val:.4f}"
         )
 
         records.append(
@@ -467,10 +475,10 @@ def main() -> None:
         colors=[NDVI_LOW_HEX, NDVI_HIGH_HEX],
         vmin=vmin,
         vmax=vmax,
-        caption="NDVI mean (within buffer)",
+        caption=f"{args.metric_col} (within buffer)",
     ).add_to(m)
 
-    # Make the NDVI legend readable on dark basemap and add low/high labels.
+    # Make the legend readable on dark basemap and add low/high labels.
     legend_js = r"""
     <style>
       /* Branca colormap legend container */
@@ -504,7 +512,7 @@ def main() -> None:
             if (el.querySelector('.ndvi-end-labels')) { continue; }
             var labels = document.createElement('div');
             labels.className = 'ndvi-end-labels';
-            labels.innerHTML = '<div>Low NDVI (less green)</div><div>High NDVI (more green)</div>';
+            labels.innerHTML = '<div>Lower values</div><div>Higher values</div>';
             el.appendChild(labels);
           }
         }
